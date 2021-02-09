@@ -5,48 +5,22 @@ import Links from './links';
 import Skills from './skills';
 
 class Profile extends React.Component{
-    me = {
-        name:'Md Arafatul Islam',
-        title: 'AI Engineer, Full Stack Developer'
-    }
-
-    skills = {
-        skillA:'Python',
-        skillB:'Javascript',
-        skillC:'ReactJS',
-    }
-    
-    social ={
-        fbAccount:{
-            title:"Facebook",
-            url:'https://www.facebook.com/AUIArafat'
-        },
-        hackerrankAccount:{
-            title:"HackerRank",
-            url:'https://www.hackerrank.com/profile/auiarafat'
-        },
-        inAccount:{
-            title:"LinkedIn",
-            url:'https://www.linkedin.com/in/md-arafatul-islam-65250098/'
-        },
-        gitHubAccount:{
-            title:"GitHub",
-            url:"https://github.com/AUIArafat/"
-        }
-    }
-
     render() {
+        console.log(this.props);
         return (
             <div className="Container">
+                <button onClick={this.props.click}> Delete</button>
                 <Bio 
-                    me={this.me}
+                    me={this.props.profileInfo.me}
                 />
                 <Skills 
-                    skills={this.skills}
+                    skills={this.props.profileInfo.skills}
+                    changed={this.props.changed}
                 />
                 <Links
-                    social={this.social}
+                    social={this.props.profileInfo.social}
                 />
+                <p>{this.props.children}</p>
             </div>
         )
     }
